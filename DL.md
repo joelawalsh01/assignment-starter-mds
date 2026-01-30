@@ -27,4 +27,4 @@
 
 ## Assignment Request
 
-[Describe the specific assignment you need here—include the week/topic, type (lab, homework, project), relevant mathematical concepts, and whether you want "from scratch" implementation, PyTorch implementation, or both.]
+[Describe the specific assignment you need here—include the week/topic, type (lab, homework, project), relevant mathematical concepts,, how it relates to course goals overall, and whether you want "from scratch" implementation, PyTorch implementation, or both. Engage me in questioning if I leave any of this information out]
