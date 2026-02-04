@@ -23,6 +23,8 @@
 
 **AI Policy:** AI/LLM use is permitted for boilerplate and debugging, but students must include a transcript of any AI conversation in their submission. Students must be able to verbally explain any code they submit—inability to do so is considered plagiarism.
 
+**Note for Beamers and Latex:** When generating slides as Beamers, please make it so that code lines aren't in the slides involving code, as this makes it difficult for students to copy and paste the code. You need to add the upquote package to keep the quotes as straight ASCII quotes that copy correctly as well
+
 ---
 
 ## Assignment Request
