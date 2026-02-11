@@ -25,6 +25,9 @@
 
 **Note for Beamers and Latex:** When generating slides as Beamers, please make it so that code lines aren't in the slides involving code, as this makes it difficult for students to copy and paste the code. You need to add the upquote package to keep the quotes as straight ASCII quotes that copy correctly as well
 
+**Note on Pedagogy**
+Some activities need to be didactic, but generally the approach should be from a cognitivist ( metacognition, attention to forming schema) or constructivist ( students build knowledge together). In instructional slides there should be small activities where students think pari share about bigger ideas, or to discuss conceptual knowldge 
+
 ---
 
 ## Assignment Request
