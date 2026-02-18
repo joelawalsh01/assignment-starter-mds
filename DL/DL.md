@@ -29,6 +29,9 @@
 **Note on Pedagogy**
 Some activities need to be didactic, but generally the approach should be from a cognitivist ( metacognition, attention to forming schema) or constructivist ( students build knowledge together). In instructional slides there should be small activities where students think pair share about bigger ideas, or to discuss conceptual knowledge 
 
+**Critique each lesson like a learning scientist would**
+Use this critique to stregthen the lesson. Ensure that there is (whenever possible) activities that access and build on prior knowledge, appropriately scaffold, give opportunities for metacognition, allow for students to refine schema, and formatively assess learning. 
+
 ---
 
 ## Prior Assignments
