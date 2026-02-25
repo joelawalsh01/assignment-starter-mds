@@ -51,6 +51,9 @@ Students set up a conda virtual environment, installed Flask and requests, and b
 **Lab 3b: Building a Skinner Teaching Machine in Flask (Week 3)**
 Students designed and built a web-based teaching machine implementing Skinner's programmed instruction principles. They created a frame data structure (Python dicts), wrote 5-10 instructional frames on a topic of their choice, implemented Flask routes (`/`, `/frame`, `/submit`, `/complete`), built Jinja2 HTML templates, and used Flask sessions to track progress and score. Extension options included hints, multiple accepted answers, branching frames, and timing data. Included reflection questions connecting the build experience back to learning theory (Skinner vs. Papert/constructionism).
 
+**Lab 4: Building a Conversational Tutor with LiteLLM and Ollama (Week 4)**
+Students built a web-based conversational AI tutor using Flask, LiteLLM, and a locally-running Ollama LLM (llama3.2). They replaced the rigid frame-based Skinner teaching machine with a flexible, multi-turn chat interface where an LLM tutors students on a topic of their choice. Key tasks: writing at least 5 educational questions (with answers and common misconceptions) in a `questions.py` data structure, designing a system prompt that encodes tutoring behavior (Socratic, direct instruction, gamified, etc.), managing multi-turn conversation history via Flask sessions (sending full history to stateless LLM on each call), building an asynchronous chat UI using JavaScript `fetch` and JSON APIs (vs. Lab 3's full-page-reload pattern), and using LiteLLM as a provider-agnostic abstraction layer. Included peer testing of each other's tutors, iterating on system prompts based on feedback, and reflection questions comparing system prompt design to frame design, discussing risks of dynamic LLM responses vs. canned feedback, and considering ethical implications of deploying AI tutors with real students. Emphasized data privacy advantages of local models in educational contexts.
+
 ---
 
 ## Skills Acquired So Far
@@ -76,20 +79,44 @@ Students designed and built a web-based teaching machine implementing Skinner's 
 - Flask application structure: routes, decorators, request handling
 - HTTP fundamentals: GET/POST requests, query parameters, form data
 - Jinja2 templating: template inheritance, variables, conditionals
-- Flask sessions for maintaining state across requests
+- Flask sessions for maintaining state across requests (frame index/score in Lab 3, full conversation history in Lab 4)
 - Client-server architecture: building APIs and writing client scripts
-- Project structure: separating data (frames.py), logic (app.py), and presentation (templates/)
+- JSON API endpoints: returning `jsonify()` responses for JavaScript consumption (vs. server-rendered HTML)
+- Project structure: separating data (frames.py / questions.py), logic (app.py), and presentation (templates/)
+
+**Frontend / JavaScript**
+- Asynchronous communication with `fetch` (POST JSON to Flask backend, parse JSON response)
+- Dynamic DOM updates without page reload (chat interface pattern)
+- Contrast between server-rendered pages (Lab 3) and API + JavaScript pattern (Lab 4)
+
+**LLMs & Prompt Engineering**
+- Running local LLMs with Ollama (install, pull models, REST API at localhost:11434)
+- LiteLLM as a provider-agnostic wrapper for calling any LLM (Ollama, OpenAI, Anthropic) with a single interface
+- The three message roles: `system` (behavior/context), `user` (student input), `assistant` (LLM responses)
+- Multi-turn conversation: LLMs are stateless—must send full conversation history on every call
+- System prompt design: encoding pedagogical strategy (Socratic, direct instruction, gamified) into prompt instructions
+- Iterative prompt refinement based on testing and peer feedback
+- Hardcoding domain knowledge (questions, answers, misconceptions) into system prompts to ground LLM behavior
 
 **Learning Theory**
 - Behaviorism: Skinner's programmed instruction principles (small steps, active response, immediate feedback, self-pacing)
 - Connecting theory to practice: designing instructional frames that embody behaviorist principles
-- Beginning to critique behaviorist approaches through the lens of constructionism (Papert)
+- Critiquing behaviorist approaches through the lens of constructionism (Papert)
+- Comparing rigid/canned feedback (teaching machines) vs. flexible/dynamic feedback (LLM tutors): tradeoffs in control, predictability, and adaptability
+- Designing tutoring strategies: how a tutor should handle wrong answers, off-topic input, confusion, partial understanding
+
+**Ethics & Privacy in Ed-Tech**
+- Data privacy implications of cloud vs. local LLMs for student data
+- Risks of deploying AI tutors: unpredictable responses, hallucination, lack of error-rate guarantees
+- Tradeoffs between local models (privacy, cost, control) and cloud models (capability)
 
 **Software Engineering Practices**
 - CI/CD concepts and workflow
 - Code review as a collaborative practice
 - Writing automated tests with pytest
 - Structuring projects with separation of concerns
+- Abstraction as a design principle: separating tutoring logic from model provider (LiteLLM)
+- Peer/user testing: systematically testing edge cases (wrong answers, off-topic, "I don't understand") and iterating
 
 ---
 

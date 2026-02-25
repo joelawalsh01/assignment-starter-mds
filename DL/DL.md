@@ -48,6 +48,10 @@ A paired lab where students implemented gradient descent in NumPy from scratch. 
 **Assignment 4 (Lab): Binary Classification -- Breast Cancer**
 Students implemented a from-scratch binary classifier (logistic regression) using PyTorch tensors on the sklearn breast cancer dataset. They built sigmoid, forward pass, MSE loss, and gradient functions by hand from derived equations, wrote a full training loop with per-sample gradient updates, normalized features using training-set statistics only, evaluated train/test accuracy, and visualized loss curves and learned feature weights. Includes think-pair-share activities on data leakage and model interpretability.
 
+**Lab 4: From Linear Models to Multilayer Perceptrons (2-day lab)**
+*Day 1 (Theory):* Beamer lecture building from the linear classifier in Assignment 4 to MLPs. Students explored why linear models produce flat (hyperplane) decision boundaries, proved that stacking linear layers without activation collapses to a single linear layer, and learned that nonlinear activations (ReLU) between layers are the essential ingredient that makes depth meaningful. Covered ReLU vs. sigmoid for hidden layers (vanishing gradient problem), BCE loss vs. MSE for classification (stronger gradients for confident wrong predictions), and backpropagation as the chain rule applied layer-by-layer right to left. Includes TensorFlow Playground exploration and a pen-and-paper forward/backward pass exercise on a tiny 2-input, 2-hidden, 1-output network.
+*Day 2 (Implementation):* Paired Jupyter notebook lab on the UCI Sonar dataset (208 samples, 60 frequency-band features, mines vs. rocks). Students built a linear classifier baseline using `nn.Module`, wrote a reusable training function with BCE loss and Adam optimizer, then designed and trained their own MLP architectures. Ran at least 5 architecture experiments varying depth, width, and activation functions, all logged to MLflow. Visualized PCA-projected decision boundaries comparing linear vs. MLP models. Compared best MLP against a Random Forest baseline to discuss when neural networks are the right tool vs. simpler methods on small tabular data. Pulled MLflow experiment data into pandas and wrote a research-backed analysis report.
+
 ---
 
 ## Skills Learned Thus Far
@@ -58,11 +62,20 @@ Students implemented a from-scratch binary classifier (logistic regression) usin
 - **Gradient descent:** The optimization algorithm, learning rate, convergence/stopping conditions, effect of hyperparameters on training behavior
 - **NumPy fundamentals:** Array operations, `np.linalg.norm`, `np.linspace`, `np.meshgrid`
 - **PyTorch basics:** Tensors, `torch.exp`, `torch.dot`, `torch.zeros`, converting between NumPy and PyTorch
+- **PyTorch `nn.Module`:** Defining models as classes with `__init__` and `forward`, `nn.Linear`, `nn.ReLU`, `nn.Sigmoid`, `nn.Sequential`; using `model.parameters()`, `model.train()`, `model.eval()`
+- **Autograd and optimizers:** `loss.backward()` for automatic gradient computation, `optimizer.zero_grad()` / `optimizer.step()` pattern, Adam optimizer, `torch.no_grad()` context for evaluation
+- **Loss functions:** MSE loss (from-scratch and `nn.BCELoss`); understanding why BCE gives stronger gradients than MSE for classification (gradient analysis for confident wrong predictions)
 - **From-scratch implementation:** Translating mathematical equations into working code without high-level abstractions
-- **Data handling:** Train/test splits, feature normalization (and why to use only training statistics), loading sklearn datasets
-- **Visualization:** Contour plots, loss curves, feature importance bar charts using matplotlib
+- **Data handling:** Train/test splits, feature normalization (and why to use only training statistics), loading sklearn datasets, `StandardScaler`, `stratify` parameter
+- **Visualization:** Contour plots, loss curves, feature importance bar charts, PCA-projected decision boundary plots using matplotlib
 - **Binary classification pipeline:** Forward pass, loss computation, backpropagation (manual gradients), weight updates, accuracy evaluation
-- **ML concepts:** Sigmoid activation, decision boundaries, overfitting vs. underfitting intuition, hyperparameter experimentation
+- **MLP architecture:** Designing multi-layer perceptrons, choosing depth/width/activation functions, understanding why stacking linear layers without activation collapses to one layer
+- **Activation functions:** ReLU for hidden layers (gradient is 0 or 1, no vanishing), sigmoid for binary output; understanding the vanishing gradient problem with sigmoid in hidden layers
+- **Backpropagation theory:** Forward pass then backward pass, chain rule applied layer-by-layer, upstream gradient times local derivative pattern, hand-computing gradients through a small network
+- **Experiment tracking:** MLflow (`set_experiment`, `start_run`, `log_param`, `log_metric`, `log_model`, `search_runs`); systematic architecture comparison with logged hyperparameters and metrics
+- **Dimensionality reduction:** PCA for visualization (`PCA`, `fit_transform`, `inverse_transform`, variance explained)
+- **Model comparison:** Linear vs. nonlinear classifiers, neural networks vs. tree-based methods (Random Forest) on small tabular datasets; understanding when each approach is appropriate
+- **ML concepts:** Sigmoid activation, decision boundaries (linear vs. nonlinear), overfitting vs. underfitting intuition, hyperparameter experimentation, linearly vs. non-linearly separable data, model capacity vs. dataset size tradeoffs
 
 ---
 
